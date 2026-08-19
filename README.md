@@ -20,7 +20,6 @@ CineReserve is a modern full-stack web application for browsing movies, viewing 
 * **Backend**: FastAPI, SQLAlchemy, Pydantic, SQLite
 * **Frontend**: HTML5, JavaScript (ES6+), Tailwind CSS
 * **Authentication**: OAuth2 with Password Hashing (Passlib / Bcrypt) & JWT
-* **Email Service**: FastAPI-Mail (SMTP background tasks)
 
 ---
 
@@ -70,8 +69,6 @@ Open your browser and navigate to:
 
 * **Username**: `admin`
 * **Password**: `admin123`
-
-```
 
 
 git push origin main
