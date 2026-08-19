@@ -10,7 +10,6 @@ CineReserve is a modern full-stack web application for browsing movies, viewing 
 * **Interactive Cinema Seat Map**: Curved screen interface with color-coded seats (Available, Selected, and Occupied).
 * **Direct Seat Reservation**: Select multiple seats and lock them instantly.
 * **User Authentication**: Secure JWT-based registration and login system.
-* **Background Email Notifications**: Dispatches ticket reservation details asynchronously upon booking.
 * **Date Filtering**: Browse showtimes for today and upcoming dates seamlessly.
 
 ---
