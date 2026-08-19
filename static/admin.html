@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - CineReserve</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-6">
+    <div class="max-w-6xl mx-auto">
+        <div class="flex justify-between items-center mb-8 border-b border-gray-800 pb-4">
+            <h1 class="text-3xl font-bold text-red-500">Admin Control Panel</h1>
+            <a href="/" class="text-gray-400 hover:text-white">← Return to Storefront</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-gray-800 p-6 rounded-lg">
+                <h2 class="text-xl font-bold mb-4">Total Revenue</h2>
+                <p id="rev-stat" class="text-4xl font-extrabold text-green-400">$0.00</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg">
+                <h2 class="text-xl font-bold mb-4">Active Reservations</h2>
+                <p id="res-stat" class="text-4xl font-extrabold text-blue-400">0</p>
+            </div>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-lg mb-8">
+            <h2 class="text-xl font-bold mb-4">Showtime Capacity Metrics</h2>
+            <table class="w-full text-left text-sm text-gray-300">
+                <thead class="bg-gray-700 text-gray-100">
+                    <tr>
+                        <th class="p-3">Movie</th>
+                        <th class="p-3">Showtime</th>
+                        <th class="p-3">Booked / Total</th>
+                        <th class="p-3">Occupancy Rate</th>
+                    </tr>
+                </thead>
+                <tbody id="occupancy-table-body"></tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const token = localStorage.getItem('token');
+        async function fetchAdminReports() {
+            const res = await fetch('/api/admin/reports', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+                const data = await res.json();
+                document.getElementById('rev-stat').innerText = data.total_revenue;
+                document.getElementById('res-stat').innerText = data.total_active_reservations;
+                
+                const tbody = document.getElementById('occupancy-table-body');
+                tbody.innerHTML = data.occupancy.map(item => `
+                    <tr class="border-b border-gray-700">
+                        <td class="p-3">${item.movie_title}</td>
+                        <td class="p-3">${new Date(item.start_time).toLocaleString()}</td>
+                        <td class="p-3">${item.booked_seats} / ${item.total_seats}</td>
+                        <td class="p-3 font-semibold text-amber-400">${item.occupancy}</td>
+                    </tr>
+                `).join('');
+            }
+        }
+        fetchAdminReports();
+    </script>
+</body>
+</html>
