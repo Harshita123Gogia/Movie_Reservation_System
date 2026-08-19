@@ -34,20 +34,20 @@ Ensure you have **Python 3.9+** installed on your system.
 git clone [https://github.com/YOUR_GITHUB_USERNAME/Movie_Reservation_System.git](https://github.com/YOUR_GITHUB_USERNAME/Movie_Reservation_System.git)
 cd Movie_Reservation_System
 
-3. Install Dependencies
+**### 3. Install Dependencies**
 pip install -r requirements.txt
 
-🗄️ Database Setup & Seeding
-To clear old data and seed the database with current movies and staggered showtimes:
+**🗄️ Database Setup & Seeding**
+(To clear old data and seed the database with current movies and staggered showtimes:)
 python -m app.seed
 
-🏃 Running the Application
+**🏃 Running the Application**
 Start the local development server:
 uvicorn app.main:app --reload
 
-Open your browser and navigate to:
+**Open your browser and navigate to:**
 [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-🔑 Default Admin Credentials
+**🔑 Default Admin Credentials**
 Username: admin
 Password: admin123
