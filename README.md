@@ -70,7 +70,4 @@ Open your browser and navigate to:
 * **Username**: `admin`
 * **Password**: `admin123`
 
-
-git push origin main
-
 ```
