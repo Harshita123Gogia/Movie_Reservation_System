@@ -26,28 +26,54 @@ CineReserve is a modern full-stack web application for browsing movies, viewing 
 
 ## ⚙️ Getting Started
 
-### 1. Prerequisites
+**1. Prerequisites**
 Ensure you have **Python 3.9+** installed on your system.
 
-### 2. Clone the Repository
+**2. Clone the Repository**
 ```bash
 git clone [https://github.com/YOUR_GITHUB_USERNAME/Movie_Reservation_System.git](https://github.com/YOUR_GITHUB_USERNAME/Movie_Reservation_System.git)
 cd Movie_Reservation_System
 
-**### 3. Install Dependencies**
+```
+
+**3. Install Dependencies**
+
+```bash
 pip install -r requirements.txt
 
-**🗄️ Database Setup & Seeding**
-(To clear old data and seed the database with current movies and staggered showtimes:)
+```
+
+**4. Database Setup & Seeding**
+To clear old data and seed the database with current movies and staggered showtimes:
+
+```bash
 python -m app.seed
 
-**🏃 Running the Application**
+```
+
+**5. Running the Application**
 Start the local development server:
+
+```bash
 uvicorn app.main:app --reload
 
-**Open your browser and navigate to:**
+```
+
+Open your browser and navigate to:
+
+```text
 [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-**🔑 Default Admin Credentials**
-Username: admin
-Password: admin123
+```
+
+**6. Default Admin Credentials**
+
+* **Username**: `admin`
+* **Password**: `admin123`
+
+```
+
+
+git push origin main
+
+```
