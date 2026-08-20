@@ -29,7 +29,7 @@ Ensure you have **Python 3.9+** installed on your system.
 
 **2. Clone the Repository**
 ```bash
-git clone [https://github.com/YOUR_GITHUB_USERNAME/Movie_Reservation_System.git](https://github.com/YOUR_GITHUB_USERNAME/Movie_Reservation_System.git)
+git clone [https://github.com/YOUR_GITHUB_USERNAME/Movie_Reservation_System.git]
 cd Movie_Reservation_System
 
 ```
