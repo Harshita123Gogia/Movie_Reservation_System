@@ -1,34 +1,26 @@
-import os
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-
 from .database import engine, Base
-from .routers import auth, movies, showtimes, reservations
+from .routers import auth, movies, reservations, admin
+from .seed import seed_db
 
-# Ensure database tables exist
 Base.metadata.create_all(bind=engine)
+seed_db()
 
-app = FastAPI(title="Movie Reservation System")
+app = FastAPI(title="Movie Reservation API")
 
-# Get absolute path to the static directory
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_DIR = os.path.join(BASE_DIR, "static")
-
-# Mount static files safely
-if os.path.exists(STATIC_DIR):
-    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
-
-# Include Routers
 app.include_router(auth.router)
 app.include_router(movies.router)
-app.include_router(showtimes.router)
 app.include_router(reservations.router)
+app.include_router(admin.router)
 
-# Serve Frontend Root
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 @app.get("/")
 def read_root():
-    index_path = os.path.join(STATIC_DIR, "index.html")
-    if os.path.exists(index_path):
-        return FileResponse(index_path)
-    return {"message": "CineReserve API running"}
+    return FileResponse("static/index.html")
+
+@app.get("/admin")
+def read_admin():
+    return FileResponse("static/admin.html")
